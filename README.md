@@ -5,4 +5,4 @@ Objectif :
 Réaliser une application java permettant de modéliser des interactions entre des manifestants et des policiers 
 avec les règles simples d'algorithme cellulaire.
 
-![Diagram](http://jgraph.github.io/drawio-github/diagram.png)
+Pour ouvrir l'uml merci de l'ouvrir à partir de ce lien :  https://www.draw.io/?mode=github
