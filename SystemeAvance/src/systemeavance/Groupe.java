@@ -13,4 +13,5 @@ import java.util.ArrayList;
  */
 public class Groupe {
     ArrayList<CelluleActive> MembresGroupe;
+    Point objectif;
 }
