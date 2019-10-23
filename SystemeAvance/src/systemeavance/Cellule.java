@@ -10,9 +10,10 @@ package systemeavance;
  * @author e1603982
  */
 public abstract class Cellule {
+
     Point centre;
     
     public Cellule(Point centre){
-        this.centre =centre;
+        this.centre = centre;
     }
 }

@@ -10,13 +10,17 @@ package systemeavance;
  * @author e1603982
  */
 public class Policier extends CelluleActive {
-    public Policier(Point centre,Groupe referent) {
+    public Policier(Point centre, Groupe referent) {
         super(centre,referent);
     }
-    
+
     @Override
-    public Point Deplacement(){
+    public Point Deplacement(int pas) {
         // TODO : place here the rule of the demonstrator
+        //il y a deux deplacements : charger manifestant et revenir vers objectif
         return new Point(0,0);
     }
+    public boolean estManifestantProche(){return true;};
+    public void charger(){};
 }
+

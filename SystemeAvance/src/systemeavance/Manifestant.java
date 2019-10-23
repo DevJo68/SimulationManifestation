@@ -10,14 +10,21 @@ package systemeavance;
  * @author e1603982
  */
 public class Manifestant extends CelluleActive {
-    
-    public Manifestant(Point centre,Groupe referent) {
+
+
+
+    public Manifestant(Point centre, Groupe referent) {
         super(centre,referent);
     }
-    
+
+
+    public boolean estPoliceProche(){
+        //On teste si il  a des police proches
+        return true;
+    }
+
     @Override
-    public Point Deplacement(){
-        // TODO : place here the rule of the demonstrator
+    public Point Deplacement(int pas) {
         return new Point(0,0);
     }
 }
