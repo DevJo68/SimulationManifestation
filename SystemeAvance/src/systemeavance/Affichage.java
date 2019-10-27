@@ -1,0 +1,100 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package systemeavance;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.NumberFormat;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author victo
+ */
+public class Affichage extends JFrame {
+
+    public Affichage() {
+
+    }
+
+    public void afficher(String titre) {
+        JPanel p = new JPanel();
+        GridLayout gl = new GridLayout();
+        JLabel label = new JLabel(" Nombre de policier :");
+        label.setHorizontalAlignment(JLabel.CENTER);
+        JLabel label2 = new JLabel(" Nombre de manifestant :");
+                label2.setHorizontalAlignment(JLabel.CENTER);
+        gl.setRows(20);
+        gl.setColumns(1);
+        gl.setVgap(5);
+        p.setBackground(Color.red);
+        JPanel grille = new JPanel();
+
+        grille.setBackground(Color.yellow);
+        JPanel ctrl = new JPanel();
+        //ctrl.setBackground(Color.black);
+        JButton start = new JButton("Lancer la Simulation");
+        JButton stop = new JButton("Stopper la Simulation");
+        //GridBagConstraints gbc = new GridBagConstraints();
+        setSize(1366, 768);
+        grille.setPreferredSize(new Dimension(1000, getHeight()));
+        ctrl.setPreferredSize(new Dimension(250, getHeight()));
+        JFormattedTextField jtf = new JFormattedTextField(NumberFormat.getIntegerInstance());
+        JFormattedTextField jtf2 = new JFormattedTextField(NumberFormat.getIntegerInstance());
+        Font police = new Font("Arial", Font.BOLD, 14);
+        jtf.setFont(police);
+        jtf.setPreferredSize(new Dimension(150, 30));
+        jtf.setForeground(Color.BLUE);
+        jtf2.setFont(police);
+        jtf2.setPreferredSize(new Dimension(150, 30));
+        jtf2.setForeground(Color.BLUE);
+        ctrl.add(label);
+        ctrl.add(jtf);
+                ctrl.add(label2);
+        ctrl.add(jtf2);
+        ctrl.add(start);
+        ctrl.add(stop);
+        ctrl.setLayout(gl);
+        p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
+        p.add(grille);
+        p.add(ctrl);
+        setContentPane(p);
+
+        setLocationRelativeTo(null);
+        setTitle(titre);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        
+        start.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(rootPane, "Programme lancer","Arret",JOptionPane.WARNING_MESSAGE);
+            }
+        });
+         stop.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JOptionPane.showMessageDialog(rootPane, "Programme stoppé","Arret",JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+    }
+
+}

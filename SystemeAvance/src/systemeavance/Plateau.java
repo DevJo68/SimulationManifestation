@@ -24,11 +24,15 @@ public class Plateau {
         // TODO : ici a lieu le code qui calcul l'iteration suivante à partir de la liste des cellules.
         ArrayList<Policier> NewlistPoliciers= new ArrayList<Policier>();
         for(Policier elem : listPoliciers){
-            NewlistPoliciers.add(new Policier(elem.Deplacement(),elem.GroupeReferent));
+            //Ligne modifié car erreur sur la fonction Deplacement
+            //NewlistPoliciers.add(new Policier(elem.Deplacement(),elem.GroupeReferent));
+            NewlistPoliciers.add(new Policier(elem.Deplacement(1),elem.GroupeReferent));
         }
         ArrayList<Manifestant> NewlistManifestants= new ArrayList<Manifestant>();
         for(Manifestant elem : listManifestants){
-            NewlistManifestants.add(new Manifestant(elem.Deplacement(),elem.GroupeReferent));
+            //Ligne modifié car erreur sur la fonction Deplacement
+            //NewlistManifestants.add(new Manifestant(elem.Deplacement(),elem.GroupeReferent));
+            NewlistManifestants.add(new Manifestant(elem.Deplacement(1),elem.GroupeReferent));
         }
         
         Dessin();//On redessine le dessin après avoir terminer de calculer une application

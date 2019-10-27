@@ -12,11 +12,9 @@ package systemeavance;
 public abstract class CelluleActive extends Cellule{
     public Groupe GroupeReferent;//Reference vers le groupe dont elle fait partie, Null si elle ne fait partie d'aucun groupe
     
-    public abstract Point Deplacement(int pas){
-        //TODO implementer logique de deplacement qui va etre la meme pour toute cellule active selon un pas donné
-        // deplacement vers GroupeReferent.objectif;
-        
-    };
+    //TODO implementer logique de déplacement qui va être le même pour toute cellules active selon un pas donné
+    // deplaccement vers GroupeReferent objectif.
+    public abstract Point Deplacement(int pas);
     
     
     public CelluleActive(Point centre,Groupe referent){
