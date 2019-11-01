@@ -30,10 +30,12 @@ import javax.swing.JPanel;
 public class Affichage extends JFrame {
 
     public Affichage() {
-
+        super();
     }
 
     public void afficher(String titre) {
+               // setSize(1366, 768);
+                              setSize(1366, 780);
         JPanel p = new JPanel();
         GridLayout gl = new GridLayout();
         JLabel label = new JLabel(" Nombre de policier :");
@@ -44,17 +46,18 @@ public class Affichage extends JFrame {
         gl.setColumns(1);
         gl.setVgap(5);
         p.setBackground(Color.red);
-        JPanel grille = new JPanel();
+        
+        Grille grille = new Grille(1000,720);
 
-        grille.setBackground(Color.yellow);
+
         JPanel ctrl = new JPanel();
         //ctrl.setBackground(Color.black);
         JButton start = new JButton("Lancer la Simulation");
         JButton stop = new JButton("Stopper la Simulation");
         //GridBagConstraints gbc = new GridBagConstraints();
-        setSize(1366, 768);
-        grille.setPreferredSize(new Dimension(1000, getHeight()));
-        ctrl.setPreferredSize(new Dimension(250, getHeight()));
+
+        //grille.setPreferredSize(new Dimension(1000, getHeight()));
+        ctrl.setPreferredSize(new Dimension(300, getHeight()));
         JFormattedTextField jtf = new JFormattedTextField(NumberFormat.getIntegerInstance());
         JFormattedTextField jtf2 = new JFormattedTextField(NumberFormat.getIntegerInstance());
         Font police = new Font("Arial", Font.BOLD, 14);
@@ -79,6 +82,7 @@ public class Affichage extends JFrame {
         setLocationRelativeTo(null);
         setTitle(titre);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //pack();
         setVisible(true);
         
         start.addActionListener(new ActionListener() {
