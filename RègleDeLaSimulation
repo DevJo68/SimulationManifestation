@@ -1,24 +1,29 @@
 Lien de la vidéo vu en cours :  https://www.youtube.com/watch?v=S-W0NX97DB0
 Règles de la simulation d’une manifestation basée sur le jeu de la vie
 
--	Un manifestant est représenté par une cellule
--	Un policier est représenté par une cellule
--	Les policier et les manifestants sont des cellules de type planeurs (c’est-à-dire qui peuvent ce déplacer)
--	Une cellule policière qui touche une cellule manifestant fait disparaitre la cellule manifestant pour la prochaine génération
--	Une cellule manifestant qui touche une autre cellule manifestant crée une fusion des deux cellules, de même pour les cellules policières 
--	Les cellules policières seront coloriées en bleu et les cellules manifestants en noir
--	L’objectif à atteindre sera une cellule stable (video 2:14 min)
+-	 Un manifestant est représenté par une cellule
+-	 Un policier est représenté par une cellule
+-	 Les policiers et les manifestants sont des cellules de type planeurs (c’est-à-dire qui peuvent ce déplacer)
+-	 Une cellule policière qui touche une cellule manifestant fait disparaitre la cellule manifestant pour la prochaine génération
+-	 Une cellule manifestant qui touche une autre cellule manifestant crée une fusion des deux cellules pour la prochaine génération,
+   de même pour les cellules policières 
+-	 Les cellules policières seront coloriées en bleu et les cellules manifestants en noir
+-	 L’objectif à atteindre sera une cellule stable (video 2:14 min)
 
 
 Déplacement des cellules durant la simulation 
 
-Déterminer à l’aide de règles du jeu de la vie, des sous règles simples qui vont permettre de créer un déplacement des cellules identiques de génération en génération. L’objectif à la fin sera d’avoir des cellules qui ont un déplacement en commun. 
-Comme vu dans la vidéo du jeu de la vie à partir de  7 :00min on aura deux structures planeurs, les manifestants avec une règle de déplacement et les policiers avec une autre règle de déplacement. 
+Déterminer à l’aide de règles du jeu de la vie, des sous règles simples qui vont permettre de créer un déplacement des cellules identiques
+de génération en génération. L’objectif à la fin sera d’avoir des cellules qui ont un déplacement en commun. 
+Comme vu dans la vidéo du jeu de la vie à partir de  7 :00min on aura deux structures planeurs, 
+les manifestants avec une règle de déplacement et les policiers avec une autre règle de déplacement. 
 
 Interaction entre les deux structures planeurs 
 
 Quand une cellule policière touche une cellule manifestant alors la cellule manifestant doit disparaitre pour la génération suivante. 
-Si deux cellules policières ce touche, alors elle fusionne ensemble et ne forme qu’une. De même pour les cellules manifestants. C’est une idée pour créer l’effet du groupe qui s’agrandit. 
+Si deux cellules policières ce touche, alors elle fusionne ensemble et ne forme qu’une pour la génération suivante. 
+De même pour les cellules manifestants. C’est une idée pour créer l’effet d'un groupe simple qui s'aggrandit de génération en
+génération. 
 
 Objectif 
 Lorsque l’objectif est touché sois par une cellule manifestant soit par une cellule policière alors la simulation s’arrête.
