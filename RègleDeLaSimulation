@@ -3,8 +3,8 @@ Règles de la simulation d’une manifestation basée sur le jeu de la vie
 
 -	Un manifestant est représenté par une cellule
 -	Un policier est représenté par une cellule
--	Les policier et les manifestants sont des cellules de type planeurs (c’est-à-dire qui peuvent se déplacer)
--	 Une cellule policière qui touche une cellule manifestant fait disparaitre la cellule manifestant pour la prochaine génération
+-	Les policier et les manifestants sont des cellules de type planeurs (c’est-à-dire qui peuvent ce déplacer)
+-	Une cellule policière qui touche une cellule manifestant fait disparaitre la cellule manifestant pour la prochaine génération
 -	Une cellule manifestant qui touche une autre cellule manifestant crée une fusion des deux cellules, de même pour les cellules policières 
 -	Les cellules policières seront coloriées en bleu et les cellules manifestants en noir
 -	L’objectif à atteindre sera une cellule stable (video 2:14 min)
