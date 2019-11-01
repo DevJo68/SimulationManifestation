@@ -12,6 +12,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
@@ -29,26 +30,29 @@ import javax.swing.JPanel;
  */
 public class Affichage extends JFrame {
 
+    private Dimension screen;
+
     public Affichage() {
         super();
+        // Taille de l'écran
+        screen = Toolkit.getDefaultToolkit().getScreenSize();        
     }
 
     public void afficher(String titre) {
-               // setSize(1366, 768);
-                              setSize(1366, 780);
+        // setSize(1366, 768);
+        setSize(screen.width, screen.height);
         JPanel p = new JPanel();
         GridLayout gl = new GridLayout();
         JLabel label = new JLabel(" Nombre de policier :");
         label.setHorizontalAlignment(JLabel.CENTER);
         JLabel label2 = new JLabel(" Nombre de manifestant :");
-                label2.setHorizontalAlignment(JLabel.CENTER);
+        label2.setHorizontalAlignment(JLabel.CENTER);
         gl.setRows(20);
         gl.setColumns(1);
         gl.setVgap(5);
         p.setBackground(Color.red);
-        
-        Grille grille = new Grille(51,51);
-
+        // Crée une grille avec 51 cases sur 51 cases
+        Grille grille = new Grille(51, 51);
 
         JPanel ctrl = new JPanel();
         //ctrl.setBackground(Color.black);
@@ -69,7 +73,7 @@ public class Affichage extends JFrame {
         jtf2.setForeground(Color.BLUE);
         ctrl.add(label);
         ctrl.add(jtf);
-                ctrl.add(label2);
+        ctrl.add(label2);
         ctrl.add(jtf2);
         ctrl.add(start);
         ctrl.add(stop);
@@ -84,18 +88,18 @@ public class Affichage extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //pack();
         setVisible(true);
-        
+
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(rootPane, "Programme lancer","Arret",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Programme lancé", "Arret", JOptionPane.WARNING_MESSAGE);
             }
         });
-         stop.addActionListener(new ActionListener() {
+        stop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                JOptionPane.showMessageDialog(rootPane, "Programme stoppé","Arret",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Programme stoppé", "Arret", JOptionPane.ERROR_MESSAGE);
             }
         });
 

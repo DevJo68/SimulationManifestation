@@ -9,7 +9,7 @@ package systemeavance;
  *
  * @author e1603982
  */
-public abstract class Cellule {
+public class Cellule {
 
     Point centre;
     
