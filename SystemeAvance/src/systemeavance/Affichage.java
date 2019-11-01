@@ -47,7 +47,7 @@ public class Affichage extends JFrame {
         gl.setVgap(5);
         p.setBackground(Color.red);
         
-        Grille grille = new Grille(1000,720);
+        Grille grille = new Grille(51,51);
 
 
         JPanel ctrl = new JPanel();

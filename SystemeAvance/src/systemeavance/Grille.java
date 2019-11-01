@@ -19,10 +19,11 @@ public class Grille extends JPanel{
     
     private int width,height;
     
-    public Grille(int width,int height){
+    public Grille(int nbCaseHorizontal,int nbCaseVertical){
         super();
-        this.width =  width;
-        this.height = height;
+        
+        this.width =  nbCaseHorizontal*10;
+        this.height = nbCaseVertical*10;
         setPreferredSize(new Dimension(width, height));
                 System.out.println(this.width);
         System.out.println(this.height);
