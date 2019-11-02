@@ -13,4 +13,11 @@ public class CelluleVide extends Cellule {
     public CelluleVide(Point centre){
         super(centre);
     }
+
+    @Override
+    public String getType() {
+        return "Vide";
+    }
+    
+    
 }

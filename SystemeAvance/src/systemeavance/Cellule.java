@@ -16,4 +16,6 @@ public abstract class Cellule {
     public Cellule(Point centre){
         this.centre = centre;
     }
+    
+    public abstract String getType();
 }

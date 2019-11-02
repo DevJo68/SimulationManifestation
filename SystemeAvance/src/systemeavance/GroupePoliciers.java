@@ -17,9 +17,9 @@ public class GroupePoliciers extends Groupe {
    }
    @Override
    public void Deplacement(){
-       //On teste si il ya des manifestant proche d'un membre
-       //si oui on fait charger le crs avec le X crs le plus proches
-       //sinon deplacer vers lobjectif a deplacer
+        MembresGroupe.forEach((policier) -> {
+           Deplacement();
+       });
    }
 
 }

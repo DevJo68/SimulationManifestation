@@ -17,9 +17,9 @@ public class GroupeManifestant extends Groupe {
    }
    @Override
    public void Deplacement(){
-       //On teste si il ya des policiers proche d'un membre
-       //si oui on fait reculer le groupe
-       //sinon deplacer vers lobjectif
+       MembresGroupe.forEach((manifestant) -> {
+           Deplacement();
+       });
    }
 
 }

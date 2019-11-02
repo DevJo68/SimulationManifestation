@@ -14,4 +14,9 @@ public class CelluleObjectif extends Cellule{
     public CelluleObjectif(Point centre){
         super(centre);
     }
+
+    @Override
+    public String getType() {
+       return "Objectif";
+    }
 }

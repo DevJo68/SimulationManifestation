@@ -10,17 +10,43 @@ package systemeavance;
  * @author e1603982
  */
 public class Policier extends CelluleActive {
+
     public Policier(Point centre, Groupe referent) {
-        super(centre,referent);
+        super(centre, referent);
     }
 
     @Override
-    public Point Deplacement(int pas) {
-        // TODO : place here the rule of the demonstrator
-        //il y a deux deplacements : charger manifestant et revenir vers objectif
-        return new Point(0,0);
-    }
-    public boolean estManifestantProche(){return true;};
-    public void charger(){};
-}
+    public Point Deplacement() {
+        Point newPos = fairUnPas();
+        int tmpPx = newPos.x;
+        int tmpPy = newPos.y;
+        if (!newPos.equals(new Point(px, py))) {
+            if (plateau.isCellFree(tmpPx, tmpPy)) {
+                //si la cellule est vide alors on effectue le deplacement
+                deplaceDansPlateau(tmpPx, tmpPy);
+            } else if (plateau.getTypeCell(tmpPy, tmpPx).equals("Manifestant")) {
+                //Si la cellule est Manifestant on effectue le deplacement quand meme, le manifestant est remplace par une cellule vide
+                deplaceDansPlateau(tmpPx, tmpPy);
 
+            } else if (plateau.getTypeCell(tmpPy, tmpPx).equals("Policier")) {
+                //Fusion
+            }
+
+        }
+        return new Point(px, py);
+    }
+
+    @Override
+    public String getType() {
+        return "Policier";
+    }
+
+    //Dans cette methode faudra verifies si il y a un manifestant dans les parages
+    public boolean estManifestantProche() {
+        return true;
+    }
+
+    public void charger() {
+    }
+
+}
