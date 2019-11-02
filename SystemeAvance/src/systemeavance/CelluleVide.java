@@ -5,6 +5,9 @@
  */
 package systemeavance;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+
 /**
  *
  * @author e1603982
@@ -12,5 +15,11 @@ package systemeavance;
 public class CelluleVide extends Cellule {
     public CelluleVide(Point centre){
         super(centre);
+    }
+    
+     @Override
+    public void dessiner(Graphics2D g) {
+        g.setColor(Color.BLACK);
+        g.drawRect(5, 5, 10, 10);
     }
 }

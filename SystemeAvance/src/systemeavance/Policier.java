@@ -5,6 +5,9 @@
  */
 package systemeavance;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+
 /**
  *
  * @author e1603982
@@ -22,5 +25,14 @@ public class Policier extends CelluleActive {
     }
     public boolean estManifestantProche(){return true;};
     public void charger(){};
+
+    @Override
+    public void dessiner(Graphics2D g) {
+        g.setColor(Color.BLUE);
+        g.fillRect(5, 5, 10, 10);
+    }
+    
+    
+    
 }
 

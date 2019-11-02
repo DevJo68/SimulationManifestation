@@ -34,7 +34,7 @@ public class Grille extends JPanel {
         this.tableauCase = new Cellule[nbCaseVertical][nbCaseHorizontal];
         for (int i = 0; i < this.nbCaseVertical; i++) {
             for (int j = 0; j < this.nbCaseHorizontal; j++) {
-                tableauCase[i][j] = new Cellule(null);
+                tableauCase[i][j] = new CelluleVide(null);
                 nbCaseTotal++;
             }
         }
@@ -49,22 +49,36 @@ public class Grille extends JPanel {
         g2.setColor(Color.BLACK);
         //setBackground(Color.yellow);
         //g2.drawRect(5, 5, width, height);
-//        for (int i = 5; i <= width + 5; i += tailleCase) {
-//
-//            g2.drawLine(i, 5, i, height + 5);
-//        }
-//        for (int j = 5; j <= height + 5; j += tailleCase) {
-//
-//            g2.drawLine(5, j, width + 5, j);
-//        }
-        for (int i = 5; i < this.width; i += tailleCase) {
-            for (int j = 5; j < this.height; j += tailleCase) {
-                g2.drawRect(i, j, tailleCase,tailleCase);
-                //System.out.println("Dessiner " + i);
-            }
-            //System.out.println("Nouvelle colonne");
-        }
+        for (int i = 5; i <= width + 5; i += tailleCase) {
 
+            g2.drawLine(i, 5, i, height + 5);
+        }
+        for (int j = 5; j <= height + 5; j += tailleCase) {
+
+            g2.drawLine(5, j, width + 5, j);
+        }
+//        for (int i = 5; i < this.width; i += tailleCase) {
+//            for (int j = 5; j < this.height; j += tailleCase) {
+//                
+//                g2.drawRect(i, j, tailleCase,tailleCase);
+//                //System.out.println("Dessiner " + i);
+//            }
+//            //System.out.println("Nouvelle colonne");
+//        }
+        dessinerCase(g2);
+
+    }
+    
+    private void dessinerCase(Graphics2D g2){
+         for (int i = 0; i < this.nbCaseVertical; i++) {
+            for (int j = 0; j < this.nbCaseHorizontal; j++) {
+                tableauCase[i][j].dessiner(g2);
+            }
+        }
+    }
+    
+    public void changeCase(int indexX,int indexY,Cellule c){
+        tableauCase[indexY][indexX]= c;
     }
 
 }

@@ -5,6 +5,9 @@
  */
 package systemeavance;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+
 /**
  *
  * @author e1603982
@@ -13,5 +16,11 @@ public class CelluleObjectif extends Cellule{
     
     public CelluleObjectif(Point centre){
         super(centre);
+    }
+    
+    @Override
+    public void dessiner(Graphics2D g) {
+        g.setColor(Color.RED);
+        g.fillRect(25, 5, 10, 10);
     }
 }

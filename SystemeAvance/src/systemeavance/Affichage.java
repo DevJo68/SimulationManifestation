@@ -35,7 +35,7 @@ public class Affichage extends JFrame {
     public Affichage() {
         super();
         // Taille de l'écran
-        screen = Toolkit.getDefaultToolkit().getScreenSize();        
+        screen = Toolkit.getDefaultToolkit().getScreenSize();
     }
 
     public void afficher(String titre) {
@@ -53,7 +53,12 @@ public class Affichage extends JFrame {
         p.setBackground(Color.red);
         // Crée une grille avec 51 cases sur 51 cases
         Grille grille = new Grille(51, 51);
-
+        Policier polices = new Policier(new Point(10, 10), null);
+        Manifestant manif = new Manifestant(new Point(20, 20), null);
+                CelluleObjectif objectif = new CelluleObjectif(new Point(20, 20));
+        grille.changeCase(0, 0, polices);
+        grille.changeCase(1, 0, manif);
+                grille.changeCase(2, 0, objectif);
         JPanel ctrl = new JPanel();
         //ctrl.setBackground(Color.black);
         JButton start = new JButton("Lancer la Simulation");
@@ -92,7 +97,7 @@ public class Affichage extends JFrame {
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(rootPane, "Programme lancé", "Arret", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Programme lancé", "Lancement", JOptionPane.WARNING_MESSAGE);
             }
         });
         stop.addActionListener(new ActionListener() {
