@@ -71,7 +71,7 @@ public class Grille extends JPanel {
         }
     }
 
-    public void Start(int nbPolicier, int nbManifestant) {
+    public void Start(int nbPolicier, int nbManifestant,int vitesse) {
         Encours = true;
         this.plateau = new Plateau(nbCaseVertical, nbCaseHorizontal, nbPolicier, nbManifestant);
         TimerTask task = new TimerTask() {
@@ -89,7 +89,7 @@ public class Grille extends JPanel {
             }
         };
         timer = new Timer("Timer");
-        timer.scheduleAtFixedRate(task, 1000L, 1000L);
+        timer.scheduleAtFixedRate(task, vitesse, vitesse);
     }
 
     public void Stop() {

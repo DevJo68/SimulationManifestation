@@ -34,7 +34,7 @@ public class Affichage extends JFrame {
     private Dimension screen;
     private Grille grille;
     private JButton start,stop;
-    JTextField jtf,jtf2;
+    JTextField jtf,jtf2,jtf3;
     public Affichage() {
         super();
         // Taille de l'écran
@@ -50,6 +50,8 @@ public class Affichage extends JFrame {
         label.setHorizontalAlignment(JLabel.CENTER);
         JLabel label2 = new JLabel(" Nombre de manifestant :");
         label2.setHorizontalAlignment(JLabel.CENTER);
+        JLabel label3 = new JLabel("Vitesse (milliseconde)");
+        label3.setHorizontalAlignment(JLabel.CENTER);
         gl.setRows(20);
         gl.setColumns(1);
         gl.setVgap(5);
@@ -68,6 +70,7 @@ public class Affichage extends JFrame {
         ctrl.setPreferredSize(new Dimension(300, getHeight()));
         jtf = new JTextField();
         jtf2 = new JTextField();
+                jtf3 = new JTextField();
         Font police = new Font("Arial", Font.BOLD, 14);
         jtf.setFont(police);
         jtf.setPreferredSize(new Dimension(150, 30));
@@ -75,6 +78,11 @@ public class Affichage extends JFrame {
         jtf2.setFont(police);
         jtf2.setPreferredSize(new Dimension(150, 30));
         jtf2.setForeground(Color.BLUE);
+        jtf3.setFont(police);
+        jtf3.setPreferredSize(new Dimension(150, 30));
+        jtf3.setForeground(Color.BLUE);
+        ctrl.add(label3);
+        ctrl.add(jtf3);
         ctrl.add(label);
         ctrl.add(jtf);
         ctrl.add(label2);
@@ -82,7 +90,9 @@ public class Affichage extends JFrame {
         ctrl.add(start);
         ctrl.add(stop);
         ctrl.setLayout(gl);
-        jtf.setText("test");
+        jtf.setText("10");
+        jtf2.setText("10");
+                jtf3.setText("1000");
 
         p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
         p.add(grille);
@@ -102,7 +112,7 @@ public class Affichage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                                 JOptionPane.showMessageDialog(rootPane, "Programme lancé", "Lancement", JOptionPane.WARNING_MESSAGE);
-                grille.Start(Integer.valueOf(jtf.getText()),Integer.valueOf(jtf2.getText()));
+                grille.Start(Integer.valueOf(jtf.getText()),Integer.valueOf(jtf2.getText()),Integer.valueOf(jtf3.getText()));
                 //JOptionPane.showMessageDialog(rootPane, "Programme lancé", "Lancement", JOptionPane.WARNING_MESSAGE);
 
             }

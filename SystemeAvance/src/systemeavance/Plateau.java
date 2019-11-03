@@ -56,10 +56,10 @@ public class Plateau {
         }
         // Il reste à créer les policiers et les manifestants dans plateau
         // Pour les tests
-        plateau.get(height/2).set(10,new Manifestant(new Point(height/2, 10), null));
+        /*plateau.get(height/2).set(10,new Manifestant(new Point(height/2, 10), null));
         listManifestants.add(new Manifestant(new Point(height/2, 10),null));
         plateau.get(height/2).set(0,new Policier(new Point(height/2, 0), null));
-        listPoliciers.add(new Policier(new Point(height/2, 0),null));
+        listPoliciers.add(new Policier(new Point(height/2, 0),null));*/
     }
     
     public void NextIteration(){
