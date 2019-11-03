@@ -15,18 +15,16 @@ import java.util.TimerTask;
 import javax.swing.JPanel;
 import static systemeavance.Affichage.i;
 
-/**
- *
- * @author victo
- */
 public class Grille extends JPanel {
 
     private int width, height;
     private static Plateau plateau;
     private int tailleCase = 10;
     private boolean Encours = false;
+
     // int timer = 5000;
-    static Timer timer;
+    private static Timer timer;
+
 
     public Grille(int nbCaseHorizontal, int nbCaseVertical) {
         super();
@@ -96,8 +94,10 @@ public class Grille extends JPanel {
 
     }
 
-    public void Stop() {
-        Encours = false;
+    
+    public void Stop(){
+        Encours=false;
+
     }
 
 }

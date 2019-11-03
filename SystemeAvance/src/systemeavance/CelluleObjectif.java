@@ -19,6 +19,11 @@ public class CelluleObjectif extends Cellule{
     }
     
     @Override
+    public TypeCellule getType() {
+       return TypeCellule.Objectif;
+    }
+    
+    @Override
     public void dessiner(Graphics2D g) {
         g.setColor(Color.RED);
         g.fillRect(25, 5, 10, 10);

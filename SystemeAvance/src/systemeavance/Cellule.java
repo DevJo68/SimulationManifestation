@@ -12,13 +12,15 @@ import java.awt.Graphics2D;
  *
  * @author e1603982
  */
-public class Cellule {
+public abstract class Cellule {
 
     Point centre;
     
     public Cellule(Point centre){
         this.centre = centre;
     }
+    
+    public abstract TypeCellule getType();
     
     public void dessiner(Graphics2D g){
                 g.setColor(Color.BLACK);

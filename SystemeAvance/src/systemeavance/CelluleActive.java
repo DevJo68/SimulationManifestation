@@ -14,8 +14,7 @@ public abstract class CelluleActive extends Cellule{
     
     //TODO implementer logique de déplacement qui va être le même pour toute cellules active selon un pas donné
     // deplaccement vers GroupeReferent objectif.
-    public abstract Point Deplacement(int pas);
-    
+    public abstract Point Deplacement(Plateau plateau);
     
     public CelluleActive(Point centre,Groupe referent){
         super(centre);
