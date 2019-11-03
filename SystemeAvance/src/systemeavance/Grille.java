@@ -11,17 +11,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
-/**
- *
- * @author victo
- */
 public class Grille extends JPanel {
 
     private int width,height;
     private Plateau plateau;
     private int tailleCase = 10;
     private boolean Encours = false;
-    int timer = 5000;
+    private int timer = 5000;
     
     public Grille(int nbCaseHorizontal, int nbCaseVertical) {
         super();
@@ -78,6 +74,10 @@ public class Grille extends JPanel {
        }catch(Exception e){
            System.err.println(e);
        }
+    }
+    
+    public void setTimer(int newTimer){
+        this.timer=newTimer;
     }
     
     public void Stop(){

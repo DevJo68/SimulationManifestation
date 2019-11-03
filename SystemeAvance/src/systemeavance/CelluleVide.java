@@ -22,4 +22,9 @@ public class CelluleVide extends Cellule {
         g.setColor(Color.BLACK);
         g.drawRect(5, 5, 10, 10);
     }
+    
+    @Override
+    public TypeCellule getType() {
+        return TypeCellule.Vide;
+    }
 }

@@ -22,8 +22,8 @@ public class Plateau {
     public Plateau(int width,int height,int nbPoliciers, int nbManifestants){
         this.height=height;
         this.width=width;
-        this.listPoliciers = new ArrayList<Policier>();
-        this.listManifestants = new ArrayList<Manifestant>();
+        this.listPoliciers = new ArrayList<>();
+        this.listManifestants = new ArrayList<>();
         this.plateau = CreateEmptyBoard(new CelluleObjectif(new Point(height/2,width/2))); 
         // Il reste à créer les policiers et les manifestants dans plateau
         // Pour les tests
@@ -33,25 +33,58 @@ public class Plateau {
     }
     
     public void NextIteration(){
-        // TODO : ici a lieu le code qui calcul l'iteration suivante à partir de la liste des cellules.
-        ArrayList<Policier> NewlistPoliciers= new ArrayList<Policier>();
+        ArrayList<Policier> NewlistPoliciers= new ArrayList<>();
         for(Policier elem : listPoliciers){
-            //Ligne modifié car erreur sur la fonction Deplacement
-            //NewlistPoliciers.add(new Policier(elem.Deplacement(),elem.GroupeReferent));
-            NewlistPoliciers.add(new Policier(elem.Deplacement(1),elem.GroupeReferent));
+            Policier newPolicier = new Policier(elem.Deplacement(this),elem.GroupeReferent);
+            switch (getCellule(newPolicier.centre).getType()) {
+                case Vide:
+                    setCellule(new CelluleVide(elem.centre));
+                    setCellule(newPolicier);
+                    NewlistPoliciers.add(newPolicier);
+                    break;
+                case Manifestant:
+                    //On bouge pas ou on fait la bagarre chespas
+                    NewlistPoliciers.add(elem);
+                    break;
+                case Policier:
+                    //On fait la fusion
+                    NewlistPoliciers.add(elem);
+                    break;
+                default:
+                    System.err.println("Impossible : la cellule prend la place de l'objectif!");
+                    break;
+            }
         }
-        ArrayList<Manifestant> NewlistManifestants= new ArrayList<Manifestant>();
+        ArrayList<Manifestant> NewlistManifestants= new ArrayList<>();
         for(Manifestant elem : listManifestants){
-            //Ligne modifié car erreur sur la fonction Deplacement
-            //NewlistManifestants.add(new Manifestant(elem.Deplacement(),elem.GroupeReferent));
-            NewlistManifestants.add(new Manifestant(elem.Deplacement(1),elem.GroupeReferent));
+            Manifestant newManifestant = new Manifestant(elem.Deplacement(this),elem.GroupeReferent);
+            switch (getCellule(newManifestant.centre).getType()) {
+                case Vide:
+                    setCellule(new CelluleVide(elem.centre));
+                    setCellule(newManifestant);
+                    NewlistManifestants.add(newManifestant);
+                    break;
+                case Manifestant:
+                    //On fait la fusion
+                    NewlistManifestants.add(elem);
+                    break;
+                case Policier:
+                    //On bouge pas ou on fait la bagarre chespas
+                    NewlistManifestants.add(elem);
+                    break;
+                default:
+                    System.err.println("Impossible : la cellule prend la place de l'objectif!");
+                    break;
+            }
         }
+        this.listPoliciers = NewlistPoliciers;
+        this.listManifestants = NewlistManifestants;
     }
     
     private ArrayList<ArrayList<Cellule>> CreateEmptyBoard(CelluleObjectif objectif){
-        ArrayList<ArrayList<Cellule>> newEmptyBoard = new ArrayList<ArrayList<Cellule>>();
+        ArrayList<ArrayList<Cellule>> newEmptyBoard = new ArrayList<>();
         for(int i =0;i<this.height;i++){
-            ArrayList<Cellule> newEmptyLine = new ArrayList<Cellule>();
+            ArrayList<Cellule> newEmptyLine = new ArrayList<>();
             for(int j=0;j<this.width;j++){
                 newEmptyLine.add(new CelluleVide(new Point(i, j)));
             }
@@ -67,6 +100,14 @@ public class Plateau {
     
     public int getHeight(){
         return this.height;
+    }
+    
+    private void setCellule(Cellule cell){
+        plateau.get(cell.centre.x).set(cell.centre.y,cell);
+    }
+    
+    public Cellule getCellule(Point point){
+        return plateau.get(point.x).get(point.y);
     }
     
     public Cellule getCellule(int x, int y){
