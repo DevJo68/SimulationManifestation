@@ -34,7 +34,7 @@ public class Manifestant extends CelluleActive {
     @Override
     public void dessiner(Graphics2D g) {
         g.setColor(Color.BLACK);
-        g.fillRect(centre.x-5, centre.y-5, 10, 10);
+        g.fillRect(15, 5, 10, 10);
     }
     
     

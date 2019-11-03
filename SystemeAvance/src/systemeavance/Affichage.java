@@ -31,6 +31,7 @@ import javax.swing.JPanel;
 public class Affichage extends JFrame {
 
     private Dimension screen;
+    private Grille grille;
 
     public Affichage() {
         super();
@@ -51,11 +52,11 @@ public class Affichage extends JFrame {
         gl.setColumns(1);
         gl.setVgap(5);
         p.setBackground(Color.red);
+        
         // Crée une grille avec 51 cases sur 51 cases
-        Grille grille = new Grille(51, 51);
-      
-                grille.genereAleatoire(20, 20);
+        grille = new Grille(51, 51);
         JPanel ctrl = new JPanel();
+        
         //ctrl.setBackground(Color.black);
         JButton start = new JButton("Lancer la Simulation");
         JButton stop = new JButton("Stopper la Simulation");
@@ -93,13 +94,14 @@ public class Affichage extends JFrame {
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                grille.Start();
                 JOptionPane.showMessageDialog(rootPane, "Programme lancé", "Lancement", JOptionPane.WARNING_MESSAGE);
             }
         });
         stop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                grille.Stop();
                 JOptionPane.showMessageDialog(rootPane, "Programme stoppé", "Arret", JOptionPane.ERROR_MESSAGE);
             }
         });
