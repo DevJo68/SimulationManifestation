@@ -24,7 +24,7 @@ public class Grille extends JPanel {
     
     public Grille(int nbCaseHorizontal, int nbCaseVertical) {
         super();
-        this.plateau = new Plateau(nbCaseVertical,nbCaseHorizontal,0,0);
+        this.plateau = new Plateau(nbCaseVertical,nbCaseHorizontal,5,15);
         this.width = nbCaseHorizontal * tailleCase;
         this.height = nbCaseVertical * tailleCase;
         setPreferredSize(new Dimension(width, height));

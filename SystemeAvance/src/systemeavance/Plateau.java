@@ -8,11 +8,6 @@ package systemeavance;
 import java.util.ArrayList;
 import java.util.Random;
 
-
-/**
- *
- * @author e1603982
- */
 public class Plateau {
     private int width, height;
     private ArrayList<ArrayList<Cellule>> plateau;
@@ -28,8 +23,36 @@ public class Plateau {
         this.listManifestants = new ArrayList<>();
         this.plateau = CreateEmptyBoard(new CelluleObjectif(new Point(height/2,width/2))); 
         Random rand = new Random();
-        for(int i=0;i<nbPoliciers;i++){
-            
+        int nbtest =1000;
+        while(nbPoliciers>0){
+            int newX = rand.nextInt(width);
+            int newY = rand.nextInt(height);
+            if(getCellule(new Point(newX,newY)).getType()==TypeCellule.Vide){
+                Policier newPolicier = new Policier(new Point(newX,newY),null);
+                setCellule(newPolicier);
+                listPoliciers.add(newPolicier);
+                nbPoliciers--;
+            }
+            nbtest++;
+            if(nbtest<0){
+                System.err.println("Impossible de créer tous les Policiers : il n'y a pas assez de place dans la grille ");
+                break;
+            }
+        }
+        while(nbManifestants>0){
+            int newX = rand.nextInt(width);
+            int newY = rand.nextInt(height);
+            if(getCellule(new Point(newX,newY)).getType()==TypeCellule.Vide){
+                Manifestant newManifestant = new Manifestant(new Point(newX,newY),null);
+                setCellule(newManifestant);
+                listManifestants.add(newManifestant);
+                nbManifestants--;
+            }
+            nbtest++;
+            if(nbtest<0){
+                System.err.println("Impossible de créer tous les Manifestants : il n'y a pas assez de place dans la grille ");
+                break;
+            }
         }
         // Il reste à créer les policiers et les manifestants dans plateau
         // Pour les tests
