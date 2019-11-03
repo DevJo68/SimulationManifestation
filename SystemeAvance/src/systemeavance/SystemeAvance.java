@@ -19,7 +19,6 @@ public class SystemeAvance {
         System.out.println("ok");
         Affichage f = new Affichage();
         f.afficher("Simulation d'une manifestation");
-
     }
     
 }

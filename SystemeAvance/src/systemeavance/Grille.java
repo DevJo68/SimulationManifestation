@@ -21,10 +21,13 @@ public class Grille extends JPanel {
     private int tailleCase = 10;
     private boolean Encours = false;
     private static Timer timer;
+    private int nbCaseHorizontal,nbCaseVertical;
     
     public Grille(int nbCaseHorizontal, int nbCaseVertical) {
         super();
         this.plateau = new Plateau(nbCaseVertical,nbCaseHorizontal,0,0);
+        this.nbCaseHorizontal = nbCaseHorizontal;
+        this.nbCaseVertical =  nbCaseVertical;
         this.width = nbCaseHorizontal * tailleCase;
         this.height = nbCaseVertical * tailleCase;
         setPreferredSize(new Dimension(width, height));
@@ -66,8 +69,9 @@ public class Grille extends JPanel {
         }
     }
     
-    public void Start(){
+    public void Start(int nbPolicier,int nbManifestant){
         Encours=true;
+        this.plateau = new Plateau(nbCaseVertical,nbCaseHorizontal,nbPolicier,nbManifestant);
         TimerTask task = new TimerTask() {
         public void run() {
             try{

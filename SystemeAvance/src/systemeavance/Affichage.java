@@ -23,6 +23,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -32,7 +33,8 @@ public class Affichage extends JFrame {
 
     private Dimension screen;
     private Grille grille;
-
+    private JButton start,stop;
+    JTextField jtf,jtf2;
     public Affichage() {
         super();
         // Taille de l'écran
@@ -58,14 +60,14 @@ public class Affichage extends JFrame {
         JPanel ctrl = new JPanel();
         
         //ctrl.setBackground(Color.black);
-        JButton start = new JButton("Lancer la Simulation");
-        JButton stop = new JButton("Stopper la Simulation");
+        start = new JButton("Lancer la Simulation");
+        stop = new JButton("Stopper la Simulation");
         //GridBagConstraints gbc = new GridBagConstraints();
 
         //grille.setPreferredSize(new Dimension(1000, getHeight()));
         ctrl.setPreferredSize(new Dimension(300, getHeight()));
-        JFormattedTextField jtf = new JFormattedTextField(NumberFormat.getIntegerInstance());
-        JFormattedTextField jtf2 = new JFormattedTextField(NumberFormat.getIntegerInstance());
+        jtf = new JTextField();
+        jtf2 = new JTextField();
         Font police = new Font("Arial", Font.BOLD, 14);
         jtf.setFont(police);
         jtf.setPreferredSize(new Dimension(150, 30));
@@ -80,6 +82,8 @@ public class Affichage extends JFrame {
         ctrl.add(start);
         ctrl.add(stop);
         ctrl.setLayout(gl);
+        jtf.setText("test");
+
         p.setLayout(new BoxLayout(p, BoxLayout.LINE_AXIS));
         p.add(grille);
         p.add(ctrl);
@@ -91,11 +95,16 @@ public class Affichage extends JFrame {
         //pack();
         setVisible(true);
 
+        
+
+        
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                grille.Start();
-                JOptionPane.showMessageDialog(rootPane, "Programme lancé", "Lancement", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(rootPane, "Programme lancé", "Lancement", JOptionPane.WARNING_MESSAGE);
+                grille.Start(Integer.valueOf(jtf.getText()),Integer.valueOf(jtf2.getText()));
+                //JOptionPane.showMessageDialog(rootPane, "Programme lancé", "Lancement", JOptionPane.WARNING_MESSAGE);
+
             }
         });
         stop.addActionListener(new ActionListener() {
