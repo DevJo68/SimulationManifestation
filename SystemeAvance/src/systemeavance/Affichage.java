@@ -53,13 +53,7 @@ public class Affichage extends JFrame {
         p.setBackground(Color.red);
         // Crée une grille avec 51 cases sur 51 cases
         Grille grille = new Grille(51, 51);
-        Policier polices = new Policier(new Point(10, 10), null);
-        Manifestant manif = new Manifestant(new Point(20, 20), null);
-                CelluleObjectif objectif = new CelluleObjectif(new Point(20, 20));
-        //grille.changeCase(0, 0, polices);
-        //grille.changeCase(1, 0, manif);
-                //grille.changeCase(2, 0, objectif);
-                
+      
                 grille.genereAleatoire(20, 20);
         JPanel ctrl = new JPanel();
         //ctrl.setBackground(Color.black);
