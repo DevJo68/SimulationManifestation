@@ -20,7 +20,7 @@ public class Grille extends JPanel {
     private int width, height;
     private static Plateau plateau;
     private int tailleCase = 10;
-    private boolean Encours = false;
+    private static boolean Encours = false;
 
     // int timer = 5000;
     private static Timer timer;
