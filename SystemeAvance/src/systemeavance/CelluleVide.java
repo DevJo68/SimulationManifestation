@@ -20,6 +20,6 @@ public class CelluleVide extends Cellule {
      @Override
     public void dessiner(Graphics2D g) {
         g.setColor(Color.BLACK);
-        g.drawRect(5, 5, 10, 10);
+        g.drawRect(0, 0, 10, 10);
     }
 }

@@ -29,7 +29,7 @@ public class Policier extends CelluleActive {
     @Override
     public void dessiner(Graphics2D g) {
         g.setColor(Color.BLUE);
-        g.fillRect(5, 5, 10, 10);
+        g.fillRect(centre.x-5, centre.y-5, 10, 10);
     }
     
     

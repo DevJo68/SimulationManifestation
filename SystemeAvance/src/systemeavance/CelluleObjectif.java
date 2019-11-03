@@ -21,6 +21,6 @@ public class CelluleObjectif extends Cellule{
     @Override
     public void dessiner(Graphics2D g) {
         g.setColor(Color.RED);
-        g.fillRect(25, 5, 10, 10);
+        g.fillRect(20, 0, 10, 10);
     }
 }

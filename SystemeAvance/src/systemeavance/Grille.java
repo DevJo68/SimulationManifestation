@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Random;
 import javax.swing.JPanel;
 
 /**
@@ -49,13 +50,13 @@ public class Grille extends JPanel {
         g2.setColor(Color.BLACK);
         //setBackground(Color.yellow);
         //g2.drawRect(5, 5, width, height);
-        for (int i = 5; i <= width + 5; i += tailleCase) {
+        for (int i = 0; i <= width; i += tailleCase) {
 
-            g2.drawLine(i, 5, i, height + 5);
+            g2.drawLine(i, 0, i, height);
         }
-        for (int j = 5; j <= height + 5; j += tailleCase) {
+        for (int j = 0; j <= height; j += tailleCase) {
 
-            g2.drawLine(5, j, width + 5, j);
+            g2.drawLine(0, j, width, j);
         }
 //        for (int i = 5; i < this.width; i += tailleCase) {
 //            for (int j = 5; j < this.height; j += tailleCase) {
@@ -68,17 +69,32 @@ public class Grille extends JPanel {
         dessinerCase(g2);
 
     }
-    
-    private void dessinerCase(Graphics2D g2){
-         for (int i = 0; i < this.nbCaseVertical; i++) {
+
+    private void dessinerCase(Graphics2D g2) {
+        for (int i = 0; i < this.nbCaseVertical; i++) {
             for (int j = 0; j < this.nbCaseHorizontal; j++) {
                 tableauCase[i][j].dessiner(g2);
             }
         }
     }
-    
-    public void changeCase(int indexX,int indexY,Cellule c){
-        tableauCase[indexY][indexX]= c;
+
+    public void changeCase(int indexX, int indexY, Cellule c) {
+        tableauCase[indexY][indexX] = c;
     }
 
+    public void genereAleatoire(int nbPolicier, int nbManifestant) {
+        Random r = new Random();
+        int x, y;
+        for (int i = 0; i < nbPolicier; i++) {
+            x = r.nextInt(nbCaseHorizontal);
+            y = r.nextInt(nbCaseVertical);
+            tableauCase[y][x] = new Policier(new Point((x*10+5),(y*10+5)), null);
+        }
+        for (int j = 0; j < nbManifestant; j++) {
+            x = r.nextInt(nbCaseHorizontal);
+            y = r.nextInt(nbCaseVertical);
+            tableauCase[y][x] = new Manifestant(new Point((x*10+5),(y*10+5)), null);
+            //System.out.println(tableauCase[y][x].getClass().getSimpleName());
+        }
+    }
 }
