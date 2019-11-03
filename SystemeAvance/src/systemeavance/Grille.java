@@ -9,7 +9,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JPanel;
+import static systemeavance.Affichage.i;
 
 /**
  *
@@ -17,15 +21,16 @@ import javax.swing.JPanel;
  */
 public class Grille extends JPanel {
 
-    private int width,height;
-    private Plateau plateau;
+    private int width, height;
+    private static Plateau plateau;
     private int tailleCase = 10;
     private boolean Encours = false;
-    int timer = 5000;
-    
+    // int timer = 5000;
+    static Timer timer;
+
     public Grille(int nbCaseHorizontal, int nbCaseVertical) {
         super();
-        this.plateau = new Plateau(nbCaseVertical,nbCaseHorizontal,0,0);
+        this.plateau = new Plateau(nbCaseVertical, nbCaseHorizontal, 0, 0);
         this.width = nbCaseHorizontal * tailleCase;
         this.height = nbCaseVertical * tailleCase;
         setPreferredSize(new Dimension(width, height));
@@ -58,30 +63,41 @@ public class Grille extends JPanel {
         dessinerCase(g2);
 
     }
-    
-    private void dessinerCase(Graphics2D g2){
-         for (int i = 0; i < this.plateau.getHeight(); i++) {
+
+    private void dessinerCase(Graphics2D g2) {
+        for (int i = 0; i < this.plateau.getHeight(); i++) {
             for (int j = 0; j < this.plateau.getWidth(); j++) {
                 plateau.getCellule(i, j).dessiner(g2);
             }
         }
     }
-    
-    public void Start(){
-       try{
-            Encours=true;
-            while(Encours){
-                System.out.println("systemeavance.Grille.Start()");
-                this.plateau.NextIteration();
-                Thread.sleep(timer);
+
+    public void Start() {
+                Encours = true;
+        TimerTask task = new TimerTask() {
+            public void run() {
+                try {
+
+                    System.out.println("systemeavance.Grille.Start()");
+                    plateau.NextIteration();
+                    repaint();
+
+                } catch (Exception e) {
+                    System.err.println(e);
+                }
+                if (!Encours) {
+                    timer.cancel();
+                }
+
             }
-       }catch(Exception e){
-           System.err.println(e);
-       }
+        };
+        timer = new Timer("Timer");
+        timer.scheduleAtFixedRate(task, 1000L, 1000L);
+
     }
-    
-    public void Stop(){
-        Encours=false;
+
+    public void Stop() {
+        Encours = false;
     }
-    
+
 }
