@@ -19,27 +19,27 @@ public class Policier extends CelluleActive {
 
     @Override
     public Point Deplacement(Plateau plateau) {
-        int xo = GroupeReferent.objectif.x;
-        int yo = GroupeReferent.objectif.y;
-        float dist = ((xo - this.centre.x) * (xo - this.centre.x)) + ((yo - this.centre.y) * (yo - this.centre.y));
-
-        if (dist > 0) {
-            float directionx = xo - this.centre.x;
-            float directionz = xo - this.centre.y;
-            float normalizex = directionx / dist;
-            float normalizez = directionz / dist;
-
-            float translationx = (float) (normalizex * 0.01);
-            float translationz = (float) (normalizez * 0.01);
-
-            //nouvelles coordonnes temporaires avant verification de ce qui se passe dans le plateau
-            int tmpPx = this.centre.x + (int) translationx;
-            int tmpPy = this.centre.y + (int) translationz;
-            return new Point(tmpPx, tmpPy);
-
+        int xo = plateau.objectif.centre.x;
+        int yo = plateau.objectif.centre.y;
+        int newX=this.centre.x,newY=this.centre.y;
+        
+        if (Math.abs(this.centre.x-xo)>1) {
+            if(this.centre.x-xo<0){
+                newX++;
+            }
+            else{
+                newX--;
+            }
         }
-        //si pas deplacement on return le meme coordonnes
-        return new Point(this.centre.x, this.centre.y);
+        if (Math.abs(this.centre.y-yo)>1) {
+            if(this.centre.y-yo<0){
+                newY++;
+            }
+            else{
+                newY--;
+            }
+        }
+        return new Point(newX,newY);
     }
     
     @Override
@@ -51,9 +51,9 @@ public class Policier extends CelluleActive {
     public void charger(){};
 
     @Override
-    public void dessiner(Graphics2D g) {
+    public void dessiner(Graphics2D g,int tailleCase) {
         g.setColor(Color.BLUE);
-        g.fillRect(5, 5, 10, 10);
+        g.fillRect(centre.x*tailleCase+10, centre.y*tailleCase+10, tailleCase, tailleCase);
     }
     
     

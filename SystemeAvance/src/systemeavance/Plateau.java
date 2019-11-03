@@ -6,6 +6,8 @@
 package systemeavance;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 
 /**
  *
@@ -17,7 +19,7 @@ public class Plateau {
     private ArrayList<Policier> listPoliciers;
     private ArrayList<Manifestant> listManifestants;
     private ArrayList<Groupe> listGroupes;
-    private CelluleObjectif objectif; // Peut être faire une liste ???
+    public CelluleObjectif objectif; // Peut être faire une liste ???
     
     public Plateau(int width,int height,int nbPoliciers, int nbManifestants){
         this.height=height;
@@ -25,11 +27,16 @@ public class Plateau {
         this.listPoliciers = new ArrayList<>();
         this.listManifestants = new ArrayList<>();
         this.plateau = CreateEmptyBoard(new CelluleObjectif(new Point(height/2,width/2))); 
+        Random rand = new Random();
+        for(int i=0;i<nbPoliciers;i++){
+            
+        }
         // Il reste à créer les policiers et les manifestants dans plateau
         // Pour les tests
-        plateau.get(0).set(0,new Policier(new Point(10, 10), null));
-        plateau.get(1).set(0,new Manifestant(new Point(20, 20), null));
-        plateau.get(2).set(0,new CelluleObjectif(new Point(20, 20)));
+        plateau.get(height/2).set(10,new Manifestant(new Point(height/2, 10), null));
+        listManifestants.add(new Manifestant(new Point(height/2, 10),null));
+        plateau.get(height/2).set(0,new Policier(new Point(height/2, 0), null));
+        listPoliciers.add(new Policier(new Point(height/2, 0),null));
     }
     
     public void NextIteration(){
@@ -44,7 +51,10 @@ public class Plateau {
                     break;
                 case Manifestant:
                     //On bouge pas ou on fait la bagarre chespas
-                    NewlistPoliciers.add(elem);
+                    this.listManifestants.remove(getCellule(newPolicier.centre));
+                    setCellule(new CelluleVide(elem.centre));
+                    setCellule(newPolicier);
+                    NewlistPoliciers.add(newPolicier);
                     break;
                 case Policier:
                     //On fait la fusion
@@ -69,7 +79,8 @@ public class Plateau {
                     NewlistManifestants.add(elem);
                     break;
                 case Policier:
-                    //On bouge pas ou on fait la bagarre chespas
+                    setCellule(new CelluleVide(elem.centre));
+                    this.listManifestants.remove(getCellule(elem.centre));
                     NewlistManifestants.add(elem);
                     break;
                 default:
@@ -90,6 +101,7 @@ public class Plateau {
             }
             newEmptyBoard.add(newEmptyLine);
         }
+        this.objectif=objectif;
         newEmptyBoard.get(objectif.centre.x).set(objectif.centre.y, objectif);
         return newEmptyBoard;
     }

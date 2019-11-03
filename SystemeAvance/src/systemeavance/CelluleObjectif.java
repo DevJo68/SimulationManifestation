@@ -24,8 +24,8 @@ public class CelluleObjectif extends Cellule{
     }
     
     @Override
-    public void dessiner(Graphics2D g) {
+    public void dessiner(Graphics2D g,int tailleCase) {
         g.setColor(Color.RED);
-        g.fillRect(25, 5, 10, 10);
+        g.fillRect(centre.x*tailleCase+10, centre.y*tailleCase+10, tailleCase, tailleCase);
     }
 }

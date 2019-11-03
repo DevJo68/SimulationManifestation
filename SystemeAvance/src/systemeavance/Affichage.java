@@ -16,9 +16,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -35,8 +32,6 @@ public class Affichage extends JFrame {
 
     private Dimension screen;
     private Grille grille;
-    static boolean i = false;
-
 
     public Affichage() {
         super();
@@ -57,11 +52,11 @@ public class Affichage extends JFrame {
         gl.setColumns(1);
         gl.setVgap(5);
         p.setBackground(Color.red);
-
+        
         // Crée une grille avec 51 cases sur 51 cases
         grille = new Grille(51, 51);
         JPanel ctrl = new JPanel();
-
+        
         //ctrl.setBackground(Color.black);
         JButton start = new JButton("Lancer la Simulation");
         JButton stop = new JButton("Stopper la Simulation");
@@ -99,20 +94,15 @@ public class Affichage extends JFrame {
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                i = true;
-                
-                JOptionPane.showMessageDialog(rootPane, "Programme lancé", "Lancement", JOptionPane.WARNING_MESSAGE);
-              
                 grille.Start();
-
+                JOptionPane.showMessageDialog(rootPane, "Programme lancé", "Lancement", JOptionPane.WARNING_MESSAGE);
             }
         });
         stop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               grille.Stop();
+                grille.Stop();
                 JOptionPane.showMessageDialog(rootPane, "Programme stoppé", "Arret", JOptionPane.ERROR_MESSAGE);
-                //i =false;
             }
         });
 

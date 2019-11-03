@@ -22,7 +22,7 @@ public abstract class Cellule {
     
     public abstract TypeCellule getType();
     
-    public void dessiner(Graphics2D g){
+    public void dessiner(Graphics2D g,int tailleCase){
                 g.setColor(Color.BLACK);
         g.drawRect(5, 5, 10, 10);
     }
